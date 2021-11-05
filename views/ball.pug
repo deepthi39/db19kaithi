@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  - let balls  = [{ballType:"Tennis", price: 100, color:"blue"},{ballType:"Cricket", price: 20, color:"green"},{ballType:"hockey", price: 15, color:"red"}]
+  div(class="container-fluid mt-3")
+  div(class="row")
+    each ball,index in balls
+        div(class="col-sm-4" onclick=`buy(${index})`) #{ball.ballType} - #{ball.price} - #{ball.color}
+    script.
+     
+      function buy(itemNo)
+      {
+        alert(`You selected Item ${itemNo+1}`)
+      }
