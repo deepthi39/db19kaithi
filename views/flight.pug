@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  - let flights  = [{flightType:"Cargo", price: 1000, capacity:"50 Tones"},{flightType:"Business", price: 800, capacity:"20 passengers"},{flightType:"Economy", price: 400, capacity:"250 passengers"}]
+  div(class="container-fluid mt-3")
+  div(class="row")
+    each flight,index in flights
+        div(class="col-sm-4" onclick=`buy(${index})`) #{flight.flightType} - #{flight.price} - #{flight.capacity}
+    script.
+     
+      function buy(itemNo)
+      {
+        alert(`You purchased Item ${itemNo+1}`)
+      }

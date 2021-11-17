@@ -1,5 +1,12 @@
-# fwb19kaithi
+# fwb17kondle
 
-I love singing
- 
-heroku app hosted at "https://fwb19kaithi.herokuapp.com/"
+This is my second Project to host on Heroku
+
+[Hosted my heroku server](https://fwb17kondle.herokuapp.com/)
+
+Class - Flights class Flights{ 
+constructor(flightType, price, capacity){ 
+this.flightType = flightType; 
+this.price = price; 
+this.capacity = capacity; 
+} }
