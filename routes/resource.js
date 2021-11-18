@@ -28,4 +28,15 @@ router.get('/balls/:id', ball_controller.ball_detail);
 router.get('/balls', ball_controller.ball_view_all_Page); 
 
 router.get('/balls/:id', ball_controller.ball_detail); 
+
+router.get('/detail', ball_controller.ball_view_one_Page); 
+
+router.get('/create', ball_controller.ball_create_Page); 
+
+router.get('/update', ball_controller.ball_update_Page);
+
+router.get('/delete', ball_controller.ball_delete_Page);
+
+router.delete('/balls/:id',ball_controller.ball_delete);
+
 module.exports = router; 

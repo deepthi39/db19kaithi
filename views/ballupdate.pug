@@ -1,0 +1,47 @@
+extends layout
+
+block content
+  h1= title
+  if (toShow == null)
+    h2 No instance to update
+  else
+    - let ballID = toShow._id
+    - let ballType = toShow.ballType
+    - let price = toShow.price
+    - let color = toShow.color
+    
+    div.row(class='mb-2')
+        div.mr-1 ID is
+        div #{ballID}
+    - let actionid = "/resource/balls/" + ballID
+    form(id='ballForm', action= actionid, method="PUT")
+        div.form-group
+            label.costumeAttr(for='ballType') ball Type
+            input#ballType(type='text', name='ballType', value= ballType )
+        div.form-group
+            label.costumeAttr(for='price') ball Price
+            input#price(type='number', name='price', value= price )
+        div.form-group
+            label.costumeAttr(for='location') ball color
+            input#color(type='text', name='color', value= color )
+
+        input(type="submit")
+
+    script.
+        document.forms['ballForm'].addEventListener('submit', (event) => {
+        event.preventDefault();
+        console.log(event.target)
+        // TODO do something here to show user that form is being submitted
+        fetch(event.target.action, {
+            method: 'PUT',
+            body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+        }).then((resp) => {
+            return resp.json(); // or resp.text() or whatever the server sends
+        }).then((body) => {
+            alert("Update succeded")
+            // TODO handle body
+        }).catch((error) => {
+            // TODO handle error
+            alert("Update failed " + error )
+        });
+        });

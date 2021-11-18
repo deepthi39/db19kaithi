@@ -28,7 +28,7 @@ async function recreateDB() {
   let instance1 = new Balls({
     ballType: "Table tennis",
     price: 100,
-    weight: "50 tonns",
+    weight: "5 tonns",
   });
   instance1.save(function (err, doc) {
     if (err) return console.error(err);
@@ -37,7 +37,7 @@ async function recreateDB() {
   let instance2 = new Balls({
     ballType: "Tennis",
     price: 200,
-    weight: "150 tonns",
+    weight: "10 lb",
   });
   instance2.save(function (err, doc) {
     if (err) return console.error(err);
@@ -46,7 +46,7 @@ async function recreateDB() {
   let instance3 = new Balls({
     ballType: "Cricket",
     price: 30,
-    weight: "80 tonns",
+    weight: "8 lbs",
   });
   instance3.save(function (err, doc) {
     if (err) return console.error(err);

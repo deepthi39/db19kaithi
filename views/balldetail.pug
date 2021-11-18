@@ -1,0 +1,26 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  if (toShow == null)
+    h2 No instance to delete
+  else
+    - let ballID = toShow._id
+    - let ballType = toShow.ballType
+    - let price = toShow.price
+    - let color = toShow.color
+
+      div 
+    div.row 
+      div(class='costumeAttr mr-3') ball ID is: 
+      div #{ballid} 
+    div.row 
+      div(class='costumeAttr mr-3') ball Type is: 
+      div #{ballType} 
+    div.row 
+      div(class='costumeAttr mr-3') ball price is: 
+      div #{price} 
+    div.row 
+      div(class='costumeAttr mr-3') ball Color is: 
+      div #{color}
