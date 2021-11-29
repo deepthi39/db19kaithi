@@ -1,20 +1,13 @@
 extends layout
-
+ 
 block content
-  h1= title
-  p This is my Second Heroku server
-  button(type="button", class="btn btn-success", onClick = "update()") Press Me
-  
-  p
-  div(id="target") Display
-
-  script.
-    var client_count = 0;
-
-    function update(){
-      client_count = client_count + 1;
-      console.log(client_count);
-      document.getElementById("target").innerHTML = "Value now " + client_count;
-    }
-  
-  a(href="balls") Go to Balls page
+  div(class="container-fluid mt-3 mystyle" ) Welcome to balls Application
+  if (!user) 
+    a(href="/login") Login 
+    br 
+    a(href="/register") Register 
+  if (user) 
+    p You are currently logged in as #{user.username} 
+    a(href="/balls") Take me to balls 
+    br 
+    a(href="/logout") Logout

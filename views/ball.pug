@@ -3,13 +3,25 @@ extends layout
 block content
   h1= title
   - let balls  = results;
-  div(class="container-fluid mt-3")
-  div(class="row")
-    each ball,index in balls
-        div(class="col-sm-4" onclick=`buy(${index})`) #{ball.ballType} - #{ball.price} - #{ball.weight}
+  div(class="container-fluid mt-3 mystyle")
+    - let create = `dispatch(\"/balls/create\")`
+    button.btn(class="btn-secondary ml-1", onClick=create) Create New ball
+    div(class="row m-1 paddingcustom")
+      each ball,index in balls
+        - let destination = `dispatch(\"/balls/update?id=${ball._id}\")` 
+        - let detail = `dispatch(\"/balls/detail/?id=${ball._id}")`
+        - let deleteItem = `dispatch(\"/balls/delete/?id=${ball._id}")`
+        div(class="col-sm-5 values") #{ball.ballType} - #{ball.price} - #{ball.color}
+          button.btn( class="btn-primary buttonCustom", onclick= destination) Update
+          button.btn( class="btn-success buttonCustom", onclick= detail) Details
+          button.btn( class="btn-danger buttonCustom", onclick= deleteItem) Delete
+    
     script.
-     
       function buy(itemNo)
       {
         alert(`You purchased Item ${itemNo+1}`)
       }
+      function dispatch(path){ 
+        window.location.href=path 
+      }
+      
